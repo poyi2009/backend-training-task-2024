@@ -115,8 +115,8 @@ let h = f + g;
 // 情境：請依照程式碼告知答案是多少，並在下方用註解方式寫上這五行程式碼做了什麼事
 // 以下程式碼請勿變更
 
-let numberArr1 = [5, 10, 15]; //宣告陣列numberArr1，並賦予3個值依序為5、10、15。
-let numberArr2 = numberArr1; //宣告變數numberArr2，賦予陣列numberArr1的值。
-numberArr2.push(20); //新增一個值為20的資料到numberArr2中，也就是所指向的陣列numberArr1
-numberArr2 = [25, 30, 35]; //重新賦予numberArr2一個陣列，值依序為25、30、35。
-console.log(numberArr1, numberArr2); //輸出陣列numberArr1的值和陣列numberArr2的值
+let numberArr1 = [5, 10, 15]; //宣告陣列numberArr1，並賦予3個數字型別的值依序為5、10、15。
+let numberArr2 = numberArr1; //宣告變數numberArr2，賦予陣列numberArr1的值，而因為是陣列，所以此時numberArr1和numberArr2都指向[5, 10, 15]這個記憶體空間，為傳址。
+numberArr2.push(20); //對陣列numberArr2新增一個數字型別的值20，因為numberArr1也指向numberArr2指向的記憶體空間，所以此時兩者的值都為[5, 10, 15, 20]。
+numberArr2 = [25, 30, 35]; //重新賦予變數numberArr2一個新的陣列，值依序為數字型別的25、30、35。此時只剩陣列numberArr1指向[5, 10, 15, 20]這個記憶體空間。
+console.log(numberArr1, numberArr2); //輸出陣列numberArr1的值和陣列numberArr2的值 //輸出結果：[5, 10, 15, 20] [25, 30, 35]
