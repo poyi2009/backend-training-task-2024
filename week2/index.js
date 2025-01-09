@@ -3,37 +3,41 @@
 // 若不確定答案，可將 code 貼在 chrome console 顯示後，再回頭補知識點。
 let a = 9;
 let b = 13;
-console.log(a > 0);
-console.log(b > a);
-console.log(a + b > 1);
+console.log(a > 0); //true
+console.log(b > a); //true
+console.log(a + b > 1); //true
 let c = 51;
 let d = 163;
-console.log(c == d);
-console.log(c !== d);
+console.log(c == d); //false
+console.log(c !== d); //true
 let e = 28;
 let f = 45;
-console.log(f >= e);
-console.log(f != e);
-console.log(f == e);
+console.log(f >= e); //true
+console.log(f != e); //true
+console.log(f == e); //false
 
 // ### 題目二：比較運算子 + 強制轉型
 // 請回答每個 console.log 的值為？
 let g = 8;
 let h = '8';
-console.log(g * h == 88);
-console.log(g * h == 64);
-console.log(g * h === 64);
+//console.log(g * h); //64
+console.log(g * h == 88); //false
+console.log(g * h == 64); //true
+console.log(g * h === 64); //true
 
 let i = '9';
 let j = '9';
-console.log(i + j == 99);
-console.log(i + j === '99');
-console.log(i + j === 99);
+//console.log(i + j); //'99'
+console.log(i + j == 99); //true
+console.log(i + j === '99'); //true
+console.log(i + j === 99); //false
 
 var k = 3;
 var l = '8';
+//console.log(k * l); //24
 // 請文字解釋為什麼
-console.log(k * l > 21);
+console.log(k * l > 21); //true
+//因為數字*字串時字串會轉成數字型別：k*l = 24
 
 // ### 題目三：邏輯運算子 + if, else
 // 情境：健身房週年慶，買課程送贈品
@@ -49,13 +53,24 @@ let BobPrice = 1800; /* Bob 消費金額 */
 let BobIsVip = false; /* Bob 是否為 VIP */
 
 // 練習：（可自行將下方程式碼的註解刪除，完成答題）
-// if () {
-//   console.Log（"客戶您好，您有符合贈品資格"）；
-// } else {
-//   console.Log（"客戶您好，您沒有符合贈品資格"）
-// }
-
-console.log(`贈品還剩下${giftNum}個`);
+if (BobIsVip == true) {
+  console.log("客戶您好，您有符合贈品資格");
+  giftNum -= 1;
+  if(BobPrice >= giftPriceRule){
+   giftNum -= 1;
+  }else{
+   console.log("客戶您好，您沒有符合贈品資格");
+  }
+}else{
+ if(BobPrice >= giftPriceRule){
+   console.log("客戶您好，您有符合贈品資格");
+   giftNum -= 1;
+ }else{
+   console.log("客戶您好，您沒有符合贈品資格");
+ }
+}
+//"客戶您好，您有符合贈品資格"
+console.log(`贈品還剩下${giftNum}個`); //"贈品還剩下279個"
 
 // ### 題目四：
 // 健身房的業績獎金計算
@@ -73,19 +88,38 @@ let coachBonus = baseBonus; // 教練業績獎金帳單，並已加入條件一�
 
 // 練習：計算教練業績獎金
 
-console.log(`小明總共需支付 $${coachBonus} 獎金`);
+if(coachIncome < 100000){
+  coachBonus += coachIncome * 0.1
+}else if(coachIncome >= 100000 && coachIncome < 300000){
+  coachBonus += coachIncome * 0.15
+}else if(coachIncome >= 300000){
+  coachBonus += coachIncome * 0.2
+}
+console.log(`小明總共需支付 $${coachBonus} 獎金`); //"小明總共需支付 $42000 獎金"
 
 // ### 題目五：剪刀石頭布
 // 請寫程式來判斷剪刀石頭布的輸贏
 // 宣告兩個變數，一個是 playerA 另一個是 playerB
 // 請透過 if, if 包 if, else if, else 等方法思考每個玩家出拳的情境
 
-let playerA = '剪刀';
-let playerB = '剪刀';
-if (playerA === '剪刀' && playerB === '剪刀') {
-  console.log('平手');
-}
+// let playerA = '剪刀';
+// let playerB = '剪刀';
+// if (playerA === '剪刀' && playerB === '剪刀') {
+//   console.log('平手');
+// }
 // 練習：使用 if, else if, else 判斷輸贏
+let playerA = "布";
+let playerB = "剪刀";
+
+if(playerA == "" || playerB == ""){
+  console.log("有人尚未出拳");
+}else if(playerA == playerB){
+  console.log("雙方平手");
+}else if((playerA == "剪刀" && playerB == "布") || (playerA == "石頭" && playerB == "剪刀") || (playerA == "布" && playerB == "石頭")){
+  console.log("玩家A獲勝");
+}else{
+  console.log("玩家B獲勝");
+}
 
 // ### 題目六：陣列、物件變數定義
 // 這是一間位於高雄市的健身房，名為「高雄市健身教練聯盟」，專注於提供高品質的健身指導服務。健身房內有多位專業教練，以下是兩位教練的詳細介紹：
