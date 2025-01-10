@@ -76,8 +76,11 @@ console.log(`Alex 的水壺還有 ${myWater}cc 的水`);
 let totalBill = 0;
 const machineUsePrice = 50;
 const groupClassPrice = 150;
-let machineUsePriceTotal = machineUsePrice * 3;
-let groupClassesTotal = groupClassPrice * 2;
+let machineUseNum = 3;
+let groupClassNum = 2;
+
+let machineUsePriceTotal = machineUsePrice * machineUseNum;
+let groupClassesTotal = groupClassPrice * groupClassNum;
 totalBill += machineUsePriceTotal + groupClassesTotal;
 let total = totalBill;
 console.log(
