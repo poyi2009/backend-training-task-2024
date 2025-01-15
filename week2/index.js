@@ -53,23 +53,13 @@ let BobPrice = 1800; /* Bob 消費金額 */
 let BobIsVip = false; /* Bob 是否為 VIP */
 
 // 練習：（可自行將下方程式碼的註解刪除，完成答題）
-if (BobIsVip == true) {
+if (BobIsVip || BobPrice >= giftPriceRule) {
   console.log("客戶您好，您有符合贈品資格");
   giftNum -= 1;
-  if(BobPrice >= giftPriceRule){
-   giftNum -= 1;
-  }else{
-   console.log("客戶您好，您沒有符合贈品資格");
-  }
 }else{
- if(BobPrice >= giftPriceRule){
-   console.log("客戶您好，您有符合贈品資格");
-   giftNum -= 1;
- }else{
    console.log("客戶您好，您沒有符合贈品資格");
- }
 }
-//"客戶您好，您有符合贈品資格"
+
 console.log(`贈品還剩下${giftNum}個`); //"贈品還剩下279個"
 
 // ### 題目四：
@@ -88,11 +78,11 @@ let coachBonus = baseBonus; // 教練業績獎金帳單，並已加入條件一�
 
 // 練習：計算教練業績獎金
 
-if(coachIncome < 100000){
+if(coachIncome <= 100000){
   coachBonus += coachIncome * 0.1
-}else if(coachIncome >= 100000 && coachIncome < 300000){
+}else if(coachIncome > 100000 && coachIncome <= 300000){
   coachBonus += coachIncome * 0.15
-}else if(coachIncome >= 300000){
+}else if(coachIncome > 300000){
   coachBonus += coachIncome * 0.2
 }
 console.log(`小明總共需支付 $${coachBonus} 獎金`); //"小明總共需支付 $42000 獎金"
@@ -141,45 +131,50 @@ if(playerA == "" || playerB == ""){
 - 是否接收新學員：否
 */
 // 練習：使用物件變數定義兩位教練的資訊
-const gymCoach = [
-  {
-    name:"王教練",
-    skill:["力量訓練", "減重課程"],
-    course:{
-      personalTraining:{
-        price:2000,
-        minutes:60,
-        available:true
+const gym = {
+  name:"高雄市健身教練聯盟",
+  location:"高雄市",
+  descripion:"專注於提供高品質的健身指導服務",
+  coach:[
+    {
+      name:"王教練",
+      skill:["力量訓練", "減重課程"],
+      course:{
+        personalTraining:{
+          price:2000,
+          minutes:60,
+          available:true
+        },
+        groupTraining:{
+          price:1500,
+          minutes:90,
+          available:false
+        }
       },
-      groupTraining:{
-        price:1500,
-        minutes:90,
-        available:false
-      }
+      description:"王教練擁有 5 年教學經驗，專精於提升學員的肌力與減脂，適合希望快速達成體能目標的學員。",
+      isAccepting:true
     },
-    description:"王教練擁有 5 年教學經驗，專精於提升學員的肌力與減脂，適合希望快速達成體能目標的學員。",
-    isAccepting:true
-  },
-  {
-    name:"李教練",
-    skill:["瑜伽", "體態雕塑"],
-    course:{
-      personalTraining:{
-        price:1800,
-        minutes:50,
-        available:false
+    {
+      name:"李教練",
+      skill:["瑜伽", "體態雕塑"],
+      course:{
+        personalTraining:{
+          price:1800,
+          minutes:50,
+          available:false
+        },
+        groupTraining:{
+          price:1200,
+          minutes:75,
+          available:true
+        }
       },
-      groupTraining:{
-        price:1200,
-        minutes:75,
-        available:true
-      }
-    },
-    description:"李教練是一位瑜伽大師，擁有 10 年教學經驗，擅長幫助學員雕塑完美體態，適合希望改善姿態與柔軟度的學員。",
-    isAccepting:false
-  }
-];
-console.log(gymCoach);
+      description:"李教練是一位瑜伽大師，擁有 10 年教學經驗，擅長幫助學員雕塑完美體態，適合希望改善姿態與柔軟度的學員。",
+      isAccepting:false
+    }
+  ]
+}
+console.log(gym);
 
 // ### 題目七：
 // 主管要求健身中心的兩位教練業績都需達到 50,000元
