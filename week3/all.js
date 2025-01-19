@@ -79,15 +79,12 @@ calculateTotalPrice();
 // 印出 console.log 文字為 未購買課程的會員有：.......
 
 function filterNoPurchaseMember(){
-    let purchasedMember = []; //購課會員清單
+    const purchasedMemberSet = new Set(); //宣告已購課會員名單set
     purchaseRecords.forEach(function(item){
-        purchasedMember.push(item.name);
+        purchasedMemberSet.add(item.name); //將購課會員姓名不重複地存入set
     })
-    const notPurchased = members.filter(function(member){
-        //篩選出不在購課會員清單中的會員
-        if(purchasedMember.includes(member) == false){
-            return member
-        }
+    const notPurchased = members.filter(function(member){ //遍歷會員姓名
+        return  purchasedMemberSet.has(member) == false;//回傳不存在已購課會員名單set裡的會員姓名
     })
     console.log(`未購買課程的會員有${notPurchased}`);
 }
