@@ -17,7 +17,7 @@ function checkPrice(purchasedQty){
 let purchaseRecords = [];
 //新增課程購買紀錄(搭配優惠價)
 function addPurchaseRecord(name, purchasedQty){
-    if(name === "" || members.includes(name) === false || typeof purchasedQty !== "number" || purchasedQty < 1 || purchasedQty % 1 !== 0){
+    if(name === "" || !members.includes(name) || typeof purchasedQty !== "number" || purchasedQty < 1 || purchasedQty % 1 !== 0){
         //姓名為空、非會員、堂數不為數字型別、堂數小於1、堂數不為整數
         console.log(`輸入錯誤，請輸入有效的會員名稱和課程數量。`);
     }else{
@@ -55,7 +55,7 @@ function filterNoPurchaseMember(){
         purchasedMemberSet.add(item.name); //將購課會員姓名不重複地存入
     })
     const notPurchased = members.filter(function(member){ //篩選會員姓名
-        return  purchasedMemberSet.has(member) === false;//回傳不存在已購課會員名單set裡的會員姓名
+        return  !purchasedMemberSet.has(member) //回傳不存在已購課會員名單set裡的會員姓名
     })
     console.log(`未購買課程的會員有${notPurchased}`);
 }
